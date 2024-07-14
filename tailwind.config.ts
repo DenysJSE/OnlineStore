@@ -4,11 +4,13 @@ import twColors from 'tailwindcss/colors'
 const colors = {
 	transparent: twColors.transparent,
 	black: '#2E3239',
+	gray: '#CDCDCD',
 	white: twColors.white,
 	primary: '#FF9902',
 	secondary: '#161D25',
 	'bg-color': '#F2F2F5',
-	aqua: '#268697'
+	aqua: '#268697',
+	red: twColors.red[600]
 }
 
 const config: Config = {

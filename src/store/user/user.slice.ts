@@ -1,11 +1,10 @@
 import { IInitialState } from '@/store/user/user.interface'
 import { createSlice } from '@reduxjs/toolkit'
 import { checkAuth, login, logout, register } from '@/store/user/user.actions'
+import { getStoredLocal } from '@/utils/local-storage'
 
 const initialState: IInitialState = {
-	user: localStorage.getItem('user')
-		? JSON.parse(localStorage.getItem('user') as string)
-		: null,
+	user: getStoredLocal('user'),
 	isLoading: false
 }
 
