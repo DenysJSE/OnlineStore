@@ -7,6 +7,11 @@ export const getAccessToken = () => {
 	return accessToken || null
 }
 
+export const getRefreshToken = () => {
+	const refreshToken = Cookies.get(GlobalEnums.REFRESH_TOKEN)
+	return refreshToken || null
+}
+
 export const getUserFromStorage = () => {
 	return JSON.parse(localStorage.getItem('user') || '{}')
 }
