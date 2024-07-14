@@ -5,6 +5,7 @@ import { IAuthResponse, IEmailPassword } from '@/store/user/user.interface'
 import { getContentType } from '@/api/api.helper'
 import { saveToStorage } from '@/services/auth/auth.helper'
 import { instance } from '@/api/api.interceptor'
+import { ServiceEnum } from '@/services/enums/service.enum'
 
 export const AuthService = {
 	async main(
@@ -12,7 +13,7 @@ export const AuthService = {
 		data: IEmailPassword
 	) {
 		const response = await instance<IAuthResponse>({
-			url: `/auth/${type}`,
+			url: `${ServiceEnum.AUTH}/${type}`,
 			method: 'POST',
 			data
 		})
@@ -26,7 +27,7 @@ export const AuthService = {
 		const refreshToken = Cookies.get(GlobalEnums.REFRESH_TOKEN)
 
 		const response = await axios.post<string, { data: IAuthResponse }>(
-			process.env.SERVER_URL + '/auth/login/access-token',
+			process.env.SERVER_URL + `${ServiceEnum.AUTH}/login/access-token`,
 			{ refreshToken },
 			{
 				headers: getContentType()
