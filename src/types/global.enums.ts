@@ -7,3 +7,7 @@ export enum AuthEnums {
 	LOGIN_METHOD = 'login',
 	REGISTER_METHOD = 'register'
 }
+
+export enum ProductPerPagePaginationEnum {
+	PRODUCT_PER_PAGE = 5
+}

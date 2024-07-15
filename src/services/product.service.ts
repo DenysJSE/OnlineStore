@@ -8,11 +8,13 @@ import { IProduct, TypePaginationProducts } from '@/types/product.interface'
 
 export const ProductService = {
 	async getAll(queryData = {} as FiltersDataType) {
-		return instance<TypePaginationProducts>({
+		const { data } = await instance<TypePaginationProducts>({
 			url: ServiceEnum.PRODUCT,
 			method: 'GET',
 			params: queryData
 		})
+
+		return data
 	},
 
 	async getSimilar(productId: number | string) {
