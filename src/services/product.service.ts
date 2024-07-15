@@ -4,11 +4,11 @@ import {
 	FiltersDataType,
 	ProductDataType
 } from '@/services/interfaces/product.types'
-import { IProduct } from '@/types/product.interface'
+import { IProduct, TypePaginationProducts } from '@/types/product.interface'
 
 export const ProductService = {
 	async getAll(queryData = {} as FiltersDataType) {
-		return instance<IProduct[]>({
+		return instance<TypePaginationProducts>({
 			url: ServiceEnum.PRODUCT,
 			method: 'GET',
 			params: queryData

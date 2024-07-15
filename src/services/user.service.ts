@@ -1,11 +1,11 @@
 import { instance } from '@/api/api.interceptor'
 import { ServiceEnum } from '@/services/enums/service.enum'
-import { IUser } from '@/types/user.interface'
+import { IFullUser, IUser } from '@/types/user.interface'
 import { UpdateUserProfileDataType } from '@/services/interfaces/service.interface'
 
 export const UserService = {
 	async getProfile() {
-		return instance<IUser>({
+		return instance<IFullUser>({
 			url: `${ServiceEnum.USER}/profile`,
 			method: 'GET'
 		})
