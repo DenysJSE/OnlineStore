@@ -5,7 +5,7 @@ const nextConfig = {
     SERVER_URL: process.env.SERVER_URL,
     APP_URL: process.env.APP_URL
   },
-  images: {domains: ['loremflickr.com']}
+  images: {domains: ['loremflickr.com', 'avatars.githubusercontent.com']}
 };
 
 export default nextConfig;
