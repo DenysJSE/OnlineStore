@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { useCart } from '@/hooks/useCart'
-import { useRouter } from 'next/router'
 import { useOutside } from '@/hooks/useOutside'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import cn from 'clsx'
@@ -8,13 +7,33 @@ import SquareButton from '@/ui/button/SquareButton'
 import CartItem from '@/ui/layout/header/cart/cart-item/CartItem'
 import { convertPrice } from '@/utils/convert-price'
 import Button from '@/ui/button/Button'
+import { useActions } from '@/hooks/useActions'
+import { useRouter } from 'next/router'
+import { OrderService } from '@/services/order.service'
 
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
 
 	const { items, total } = useCart()
-
+	const { reset } = useActions()
 	const { push } = useRouter()
+
+	const handlePlaceOrder = async () => {
+		try {
+			const orderData = {
+				items: items.map(item => ({
+					price: item.price,
+					quantity: item.quantity,
+					productId: item.product.id
+				}))
+			}
+			await OrderService.place(orderData)
+			reset()
+			await push('/thanks')
+		} catch (error) {
+			console.error(error)
+		}
+	}
 
 	return (
 		<div className='relative' ref={ref}>
@@ -43,7 +62,12 @@ const Cart: FC = () => {
 					<div>{convertPrice(total)}</div>
 				</div>
 				<div className='text-center'>
-					<Button variant='light' size='sm' className='btn-link mt-5 mb-2'>
+					<Button
+						variant='light'
+						size='sm'
+						className='btn-link mt-5 mb-2'
+						onClick={handlePlaceOrder}
+					>
 						Place Order
 					</Button>
 				</div>
