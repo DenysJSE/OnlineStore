@@ -1,15 +1,10 @@
 import { FC, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const Search: FC = () => {
-	const router = useRouter()
-	const [searchTerm, setSearchTerm] = useState('')
+	const [searchTerm, setSearchTerm] = useState<string>('')
 
-	const handleSearch = () => {
-		if (searchTerm.trim()) {
-			router.push(`/q?term=${searchTerm}`)
-		}
-	}
+	const { push } = useRouter()
 
 	return (
 		<div className='mb-3 ml-5 mt-9'>
@@ -28,7 +23,7 @@ const Search: FC = () => {
 					className='relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg'
 					type='button'
 					id='button-addon1'
-					onClick={handleSearch}
+					onClick={() => push(`q/?term=${searchTerm}`)}
 				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'

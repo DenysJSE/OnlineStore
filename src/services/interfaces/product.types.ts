@@ -7,10 +7,14 @@ export type ProductDataType = {
 }
 
 export type FiltersDataType = {
-	sort?: EnumProductSort
+	sort?: EnumProductSort | string
 	searchTerm?: string
 	page?: string | number
 	perPage?: string | number
+	ratings?: string
+	minPrice?: string
+	maxPrice?: string
+	categoryId?: string
 }
 
 export enum EnumProductSort {

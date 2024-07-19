@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { CategoryService } from '@/services/category.service'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useAuth } from '@/hooks/useAuth'
 import { useActions } from '@/hooks/useActions'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ const Sidebar: FC = () => {
 		select: ({ data }) => data
 	})
 
-	const { asPath } = useRouter()
+	const pathname = usePathname()
 
 	const { user } = useAuth()
 	const { logout } = useActions()
@@ -37,7 +37,7 @@ const Sidebar: FC = () => {
 									<Link
 										className={cn(
 											'block text-lg my-3 px-10 hover:text-primary transition-colors duration-200',
-											asPath === `/category/${category.slug}`
+											pathname === `/category/${category.slug}`
 												? 'text-primary'
 												: 'text-white'
 										)}

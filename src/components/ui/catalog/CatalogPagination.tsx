@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { IProduct, TypePaginationProducts } from '@/types/product.interface'
+import { TypePaginationProducts } from '@/types/product.interface'
 import ProductItem from '@/ui/catalog/product-item/ProductItem'
 import Heading from '@/ui/Heading'
 import SortDropdown from '@/ui/catalog/SortDropdown'
@@ -7,7 +7,7 @@ import Button from '@/ui/button/Button'
 import { EnumProductSort } from '@/services/interfaces/product.types'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { ProductService } from '@/services/product.service'
-import { ProductPerPagePaginationEnum } from '@/types/global.enums'
+import { PRODUCT_PER_PAGE } from '@/constants/app.constants'
 
 interface ICatalogPagination {
 	data: TypePaginationProducts
@@ -50,8 +50,7 @@ const Catalog: FC<ICatalogPagination> = ({ data, title }) => {
 					</div>
 					<div className='text-center mt-16'>
 						{Array.from({
-							length:
-								response.length / ProductPerPagePaginationEnum.PRODUCT_PER_PAGE
+							length: response.length / PRODUCT_PER_PAGE
 						}).map((_, index) => {
 							const pageNumber = index + 1
 							return (

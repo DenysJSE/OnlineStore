@@ -8,7 +8,7 @@ import CartItem from '@/ui/layout/header/cart/cart-item/CartItem'
 import { convertPrice } from '@/utils/convert-price'
 import Button from '@/ui/button/Button'
 import { useActions } from '@/hooks/useActions'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { OrderService } from '@/services/order.service'
 
 const Cart: FC = () => {

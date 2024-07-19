@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, PropsWithChildren } from 'react'
 import Sidebar from '@/ui/layout/sidebar/Sidebar'
 import Header from '@/ui/layout/header/Header'

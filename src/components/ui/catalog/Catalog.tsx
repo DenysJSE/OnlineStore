@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import { IProduct } from '@/types/product.interface'
 import ProductItem from '@/ui/catalog/product-item/ProductItem'
