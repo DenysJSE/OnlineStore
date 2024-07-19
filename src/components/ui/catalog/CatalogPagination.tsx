@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, useState } from 'react'
 import { TypePaginationProducts } from '@/types/product.interface'
 import ProductItem from '@/ui/catalog/product-item/ProductItem'
@@ -25,8 +27,9 @@ const Catalog: FC<ICatalogPagination> = ({ data, title }) => {
 		queryFn: () =>
 			ProductService.getAll({
 				page,
-				perPage: 5,
-				sort: sortType
+				perPage: PRODUCT_PER_PAGE,
+				sort: sortType,
+				ratings: ''
 			}),
 		initialData: () => data,
 		placeholderData: keepPreviousData

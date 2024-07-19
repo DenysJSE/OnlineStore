@@ -1,15 +1,17 @@
+'use client'
+
 import { FC } from 'react'
 import { useCart } from '@/hooks/useCart'
 import { useOutside } from '@/hooks/useOutside'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import cn from 'clsx'
 import SquareButton from '@/ui/button/SquareButton'
-import CartItem from '@/ui/layout/header/cart/cart-item/CartItem'
 import { convertPrice } from '@/utils/convert-price'
 import Button from '@/ui/button/Button'
 import { useActions } from '@/hooks/useActions'
 import { useRouter } from 'next/navigation'
 import { OrderService } from '@/services/order.service'
+import CartItem from '@/app/layout/header/cart/cart-item/CartItem'
 
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
@@ -29,7 +31,7 @@ const Cart: FC = () => {
 			}
 			await OrderService.place(orderData)
 			reset()
-			await push('/thanks')
+			push('/thanks')
 		} catch (error) {
 			console.error(error)
 		}

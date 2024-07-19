@@ -1,5 +1,3 @@
-'use client'
-
 import { FC, PropsWithChildren, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useActions } from '@/hooks/useActions'

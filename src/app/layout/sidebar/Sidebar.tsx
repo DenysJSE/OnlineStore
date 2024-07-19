@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { CategoryService } from '@/services/category.service'

@@ -1,9 +1,10 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import { AiOutlineHeart } from 'react-icons/ai'
-import HeaderCart from '@/ui/layout/header/cart/HeaderCart'
-import HeaderProfile from '@/ui/layout/header/HeaderProfile'
-import Search from '@/ui/layout/header/Search'
+
+import HeaderCart from '@/app/layout/header/cart/HeaderCart'
+import HeaderProfile from '@/app/layout/header/HeaderProfile'
+import Search from '@/app/layout/header/Search'
 
 const Header: FC = () => {
 	return (
