@@ -22,6 +22,12 @@ const config: Config = {
 	theme: {
 		colors,
 		extend: {
+			zIndex: {
+				1: '1',
+				2: '2',
+				3: '3',
+				4: '4'
+			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic':

@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import '@/assets/styles/globals.css'
+import '@/assets/styles/globals.scss'
 import Providers from '@/providers/Providers'
 import { Metadata } from 'next'
 import { SITE_NAME } from '@/constants/app.constants'
@@ -9,7 +9,7 @@ import Sidebar from '@/app/layout/sidebar/Sidebar'
 
 export const metadata: Metadata = {
 	icons: {
-		icon: '/favicon.svg'
+		icon: '/favicon.ico'
 	},
 	title: {
 		absolute: SITE_NAME,

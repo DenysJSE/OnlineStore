@@ -10,7 +10,7 @@ import {
 } from 'redux-persist'
 import { userSlice } from '@/store/user/user.slice'
 import { cartSlice } from '@/store/cart/cart.slice'
-import storage from 'redux-persist/lib/storage'
+import storage from '@/config/store.config'
 
 const isClient = typeof window !== 'undefined'
 

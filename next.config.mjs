@@ -5,7 +5,7 @@ const nextConfig = {
     SERVER_URL: process.env.SERVER_URL,
     APP_URL: process.env.APP_URL
   },
-  images: {domains: ['loremflickr.com', 'avatars.githubusercontent.com']},
+  images: {domains: ['avatars.githubusercontent.com']},
   async rewrites() {
     return [
       {
@@ -13,6 +13,9 @@ const nextConfig = {
         destination: 'http://localhost:7777/uploads/:path*'
       }
     ]
+  },
+  serverRuntimeConfig: {
+
   }
 };
 

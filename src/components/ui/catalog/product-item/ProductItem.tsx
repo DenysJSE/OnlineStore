@@ -6,17 +6,14 @@ import ProductRating from '@/ui/catalog/product-item/ProductRating'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { convertPrice } from '@/utils/convert-price'
-
-const DynamicFavoriteButton = dynamic(() => import('./FavoriteButton'), {
-	ssr: false
-})
+import FavoriteButton from '@/ui/catalog/product-item/FavoriteButton'
 
 const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<div className='animate-scaleIn'>
 			<div className='bg-white rounded-xl relative overflow-hidden max-w-[250px]'>
-				<div className='absolute top-2 right-3 z-10'>
-					<DynamicFavoriteButton productId={product.id} />
+				<div className='absolute top-2 right-3 z-1'>
+					<FavoriteButton productId={product.id} />
 					<AddToCartButton product={product} />
 				</div>
 				<Link href={`product/${product.slug}`}>
@@ -25,6 +22,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 						alt={product.name}
 						width={250}
 						height={250}
+						className='block mx-auto'
 					/>
 				</Link>
 			</div>
@@ -37,7 +35,7 @@ const ProductItem: FC<{ product: IProduct }> = ({ product }) => {
 			>
 				{product.category.name}
 			</Link>
-			<ProductRating product={product} />
+			<ProductRating product={product} isText />
 			<div className='text-xl font-semibold'>{convertPrice(product.price)}</div>
 		</div>
 	)

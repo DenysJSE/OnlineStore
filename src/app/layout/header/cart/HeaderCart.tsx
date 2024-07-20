@@ -12,6 +12,7 @@ import { useActions } from '@/hooks/useActions'
 import { useRouter } from 'next/navigation'
 import { OrderService } from '@/services/order.service'
 import CartItem from '@/app/layout/header/cart/cart-item/CartItem'
+import styles from './Cart.module.scss'
 
 const Cart: FC = () => {
 	const { isShow, setIsShow, ref } = useOutside(false)
@@ -44,7 +45,6 @@ const Cart: FC = () => {
 				onClick={() => setIsShow(!isShow)}
 				number={items.length}
 			/>
-
 			<div
 				className={cn(
 					'absolute top-[4.2rem] w-80 -left-[12.5rem] bg-secondary rounded-xl px-5 py-3 text-sm menu z-20 text-white',
@@ -52,14 +52,14 @@ const Cart: FC = () => {
 				)}
 			>
 				<div className='font-normal text-lg mb-5'>My Cart</div>
-				<div className={'styles.cart'}>
+				<div className={styles.cart}>
 					{items.length ? (
 						items.map(item => <CartItem item={item} key={item.id} />)
 					) : (
 						<div className='font-light'>Cart is empty!</div>
 					)}
 				</div>
-				<div className={'styles.footer'}>
+				<div className={styles.footer}>
 					<div>Total:</div>
 					<div>{convertPrice(total)}</div>
 				</div>
