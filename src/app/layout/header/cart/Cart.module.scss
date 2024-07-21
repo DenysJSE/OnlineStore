@@ -1,3 +1,8 @@
+.cartWrapper {
+  @apply absolute -left-[12.5rem] top-[4.2rem] z-20 w-80 rounded-xl bg-secondary px-6 py-4 text-sm text-white;
+  animation: 0.7s cartAnimation ease-in-out;
+}
+
 .cart {
   @apply mb-10;
 
@@ -25,5 +30,15 @@
 
   > div:last-child {
     @apply text-xl font-semibold
+  }
+}
+
+@keyframes cartAnimation {
+  from {
+    transform: translateX(110%);
+  }
+
+  to {
+    transform: translateX(0);
   }
 }
