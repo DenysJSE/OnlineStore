@@ -9,46 +9,46 @@ import { useActions } from '@/hooks/useActions'
 import Link from 'next/link'
 import cn from 'clsx'
 import { FiLogOut } from 'react-icons/fi'
+import { useIsAdminPanel } from '@/hooks/useIsAdminPanel'
+import { useCategories } from '@/hooks/queries/useCategories'
+import { ADMIN_MENU } from '@/app/layout/sidebar/admin-menu.data'
+import { convertToMenuItems } from '@/app/layout/sidebar/convert-to-menu-items'
 
 const Sidebar: FC = () => {
-	const { data, isLoading } = useQuery({
-		queryKey: ['get categories'],
-		queryFn: () => CategoryService.getAll(),
-		select: ({ data }) => data
-	})
-
-	const pathname = usePathname()
-
+	const { data, isLoading } = useCategories()
 	const { user } = useAuth()
 	const { logout } = useActions()
+	const { isAdminPanel, pathname } = useIsAdminPanel()
 
 	return (
 		<aside
-			className='bg-secondary flex flex-col justify-between'
-			style={{ height: 'calc(100vh - 91px)' }}
+			className='bg-secondary flex flex-col justify-between z-10'
+			style={{ minHeight: 'calc(100% - 91px)', height: 'calc(100vh - 91px)' }}
 		>
 			<div>
 				{isLoading ? (
 					<div>Loading...</div>
 				) : data ? (
 					<>
-						<div className='text-xl text-white mt-4 mb-6'>Categories:</div>
+						<div className='text-xl text-white mt-4 mb-6'>
+							{isAdminPanel ? 'Menu:' : 'Categories:'}
+						</div>
 						<ul>
-							{data.map(category => (
-								<li key={category.id}>
-									<Link
-										className={cn(
-											'block text-lg my-3 px-10 hover:text-primary transition-colors duration-200',
-											pathname === `/category/${category.slug}`
-												? 'text-primary'
-												: 'text-white'
-										)}
-										href={`/category/${category.slug}`}
-									>
-										{category.name}
-									</Link>
-								</li>
-							))}
+							{(isAdminPanel ? ADMIN_MENU : convertToMenuItems(data)).map(
+								item => (
+									<li key={item.label}>
+										<Link
+											className={cn(
+												'block text-lg my-3 px-10 hover:text-primary transition-colors duration-200',
+												pathname === item.href ? 'text-primary' : 'text-white'
+											)}
+											href={item.href}
+										>
+											{item.label}
+										</Link>
+									</li>
+								)
+							)}
 						</ul>
 					</>
 				) : (
