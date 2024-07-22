@@ -12,6 +12,7 @@ import cn from 'clsx'
 import styles from './ProductExplorer.module.scss'
 import Catalog from '@/ui/catalog/Catalog'
 import Pagination from '@/app/explorer/pagination/Pagination'
+import Filters from '@/app/explorer/filters/Filters'
 
 interface IProductExplorer {
 	initialProducts: TypePaginationProducts
@@ -50,7 +51,9 @@ const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 			<div
 				className={cn(styles.explorer, { [styles.filterOpened]: isFilterOpen })}
 			>
-				<aside>{/* Filters */}</aside>
+				<aside>
+					<Filters />
+				</aside>
 				<section>
 					<Catalog products={data?.products} isLoading={isFetching} />
 					<Pagination
