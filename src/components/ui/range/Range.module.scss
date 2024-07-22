@@ -1,0 +1,5 @@
+.range {
+  > input {
+    @apply rounded-lg border border-solid border-gray px-4 py-2 outline-none transition-all placeholder:text-gray focus:border-primary;
+  }
+}
