@@ -28,11 +28,13 @@ export default function RootLayout({ children }: PropsWithChildren<unknown>) {
 		<html lang='en'>
 			<body>
 				<Providers>
-					<div>
+					<div className='bg-secondary'>
 						<Header />
-						<div className='grid' style={{ gridTemplateColumns: '1fr 5fr' }}>
+						<div className='grid' style={{ gridTemplateColumns: '.8fr 5fr' }}>
 							<Sidebar />
-							<main className='p-12'>{children}</main>
+							<main className='p-12 pb-52 bg-bg-color rounded-tl-lg'>
+								{children}
+							</main>
 						</div>
 					</div>
 				</Providers>
