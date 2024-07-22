@@ -25,10 +25,12 @@ export const ProductService = {
 	},
 
 	async getBySlug(slug: string) {
-		return instance<IProduct>({
+		const { data } = await instance<IProduct>({
 			url: `${ServiceEnum.PRODUCT}/by-slug/${slug}`,
 			method: 'GET'
 		})
+
+		return data
 	},
 
 	async getById(id: number | string) {

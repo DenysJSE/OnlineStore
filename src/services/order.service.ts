@@ -11,6 +11,13 @@ export const OrderService = {
 		})
 	},
 
+	async getByUserId() {
+		return instance<IOrder[]>({
+			url: `${ServiceEnum.ORDER}/by-user`,
+			method: 'GET'
+		})
+	},
+
 	async place(data: PlaceOrderType) {
 		return instance({
 			url: ServiceEnum.ORDER,

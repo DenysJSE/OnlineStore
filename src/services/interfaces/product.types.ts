@@ -23,3 +23,7 @@ export enum EnumProductSort {
 	NEWEST = 'newest',
 	OLDEST = 'oldest'
 }
+
+export type TypeParamsFilters = {
+	searchParams: FiltersDataType
+}
