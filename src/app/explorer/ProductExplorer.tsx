@@ -6,11 +6,12 @@ import { useFilters } from '@/app/explorer/useFilters'
 import { useQuery } from '@tanstack/react-query'
 import { ProductService } from '@/services/product.service'
 import Heading from '@/ui/Heading'
-import SortDropdown from '@/ui/catalog/SortDropdown'
+import SortDropdown from '@/app/explorer/sort/SortDropdown'
 import Button from '@/ui/button/Button'
 import cn from 'clsx'
 import styles from './ProductExplorer.module.scss'
 import Catalog from '@/ui/catalog/Catalog'
+import Pagination from '@/app/explorer/pagination/Pagination'
 
 interface IProductExplorer {
 	initialProducts: TypePaginationProducts
@@ -36,7 +37,7 @@ const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 						? `Search by query "${queryParams.searchTerm}"`
 						: 'Explorer'}
 				</Heading>
-				{/*<SortDropdown />*/}
+				<SortDropdown />
 			</div>
 			<Button
 				variant='light'
@@ -52,7 +53,11 @@ const ProductExplorer: FC<IProductExplorer> = ({ initialProducts }) => {
 				<aside>{/* Filters */}</aside>
 				<section>
 					<Catalog products={data?.products} isLoading={isFetching} />
-					{/* Pagination */}
+					<Pagination
+						changePage={page => updateQueryParams('page', page.toString())}
+						currentPage={queryParams.page}
+						numberPages={data?.length / +queryParams.perPage}
+					/>
 				</section>
 			</div>
 		</>

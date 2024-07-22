@@ -12,7 +12,7 @@ const initialState: IFilterState = {
 		sort: EnumProductSort.NEWEST,
 		searchTerm: '',
 		page: 1,
-		perPage: PRODUCT_PER_PAGE,
+		perPage: 100,
 		ratings: ''
 	}
 }
